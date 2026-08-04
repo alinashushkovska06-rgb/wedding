@@ -13,6 +13,9 @@ const music = document.getElementById("bgMusic");
 // ===========================
 
 seal.addEventListener("click", () => {
+    music.play().catch(error => {
+    console.log("Музика не запустилась:", error);
+});
 
     // щоб не можна було натиснути двічі
     seal.disabled = true;
