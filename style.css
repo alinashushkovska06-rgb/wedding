@@ -2,7 +2,9 @@
    RESET
 =========================== */
 
-*{
+*,
+*::before,
+*::after{
     margin:0;
     padding:0;
     box-sizing:border-box;
@@ -12,39 +14,42 @@ html{
     scroll-behavior:smooth;
 }
 
-body{
+:root{
 
-    font-family:'Montserrat',sans-serif;
+    --bg1:#240B14;
+    --bg2:#3A1622;
+    --bg3:#562637;
 
-    background:#2b1018;
+    --envelope-dark:#4A1D2A;
+    --envelope:#612739;
+    --envelope-light:#733247;
 
-    color:#F7F2EC;
+    --paper:#F8F2EB;
 
-    overflow-x:hidden;
+    --seal:#F5EEE6;
+
+    --gold:#C6A061;
+
+    --text:#F7F3EE;
 
 }
 
-/* ===========================
-   VARIABLES
-=========================== */
+body{
 
-:root{
+    font-family:"Montserrat",sans-serif;
 
-    --bg-dark:#2A0E17;
-    --bg:#391520;
-    --bg-light:#512131;
+    overflow-x:hidden;
 
-    --gold:#C9A15E;
+    background:linear-gradient(
+        135deg,
+        var(--bg1),
+        var(--bg2),
+        var(--bg3)
+    );
 
-    --cream:#F7F2EC;
+    color:var(--text);
 
-    --paper:#F4EFE8;
-
-    --seal:#F6EFE6;
-
-    --text:#F8F4EE;
-
-    --shadow:rgba(0,0,0,.28);
+    min-height:100vh;
 
 }
 
@@ -60,21 +65,17 @@ body{
 
     display:flex;
 
-    align-items:center;
-
     justify-content:center;
+
+    align-items:center;
 
     overflow:hidden;
 
-    z-index:9999;
+    z-index:999;
 
 }
 
-/* ===========================
-   PREMIUM BACKGROUND
-=========================== */
-
-.background-gradient{
+.intro-bg{
 
     position:absolute;
 
@@ -88,20 +89,20 @@ body{
 
     radial-gradient(circle at bottom,
     rgba(0,0,0,.35),
-    transparent 55%),
+    transparent 60%),
 
     linear-gradient(
     135deg,
-    #260B14 0%,
-    #3B1520 40%,
-    #572534 100%
+    var(--bg1),
+    var(--bg2),
+    var(--bg3)
     );
 
 }
 
-/* grain */
+/* Grain */
 
-.background-gradient::after{
+.intro-bg::after{
 
     content:"";
 
@@ -109,11 +110,11 @@ body{
 
     inset:0;
 
-    opacity:.05;
+    opacity:.035;
 
     background-image:
 
-    radial-gradient(circle,#fff 1px,transparent 1px);
+    radial-gradient(#ffffff 1px, transparent 1px);
 
     background-size:18px 18px;
 
@@ -127,9 +128,325 @@ body{
 
     position:relative;
 
-    width:min(82vw,430px);
+    width:min(88vw,430px);
 
     aspect-ratio:1.45/1;
+
+    perspective:2000px;
+
+}
+
+/* ===========================
+   ENVELOPE PARTS
+=========================== */
+
+.bottom-flap{
+
+    position:absolute;
+
+    bottom:0;
+    left:0;
+
+    width:100%;
+    height:72%;
+
+    background:linear-gradient(
+        180deg,
+        var(--envelope-light),
+        var(--envelope)
+    );
+
+    border-radius:0 0 14px 14px;
+
+    box-shadow:
+        0 28px 50px rgba(0,0,0,.35),
+        inset 0 1px rgba(255,255,255,.08);
+
+    z-index:2;
+
+}
+
+/* LEFT */
+
+.left-flap{
+
+    position:absolute;
+
+    bottom:0;
+    left:0;
+
+    width:50%;
+    height:72%;
+
+    background:linear-gradient(
+        135deg,
+        var(--envelope-light),
+        var(--envelope-dark)
+    );
+
+    clip-path:polygon(
+        0 100%,
+        100% 50%,
+        100% 100%
+    );
+
+    z-index:4;
+
+}
+
+/* RIGHT */
+
+.right-flap{
+
+    position:absolute;
+
+    bottom:0;
+    right:0;
+
+    width:50%;
+    height:72%;
+
+    background:linear-gradient(
+        225deg,
+        var(--envelope-light),
+        var(--envelope-dark)
+    );
+
+    clip-path:polygon(
+        0 50%,
+        100% 100%,
+        0 100%
+    );
+
+    z-index:4;
+
+}
+
+/* TOP */
+
+.top-flap{
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:58%;
+
+    background:linear-gradient(
+        180deg,
+        #733247,
+        #4A1D2A
+    );
+
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    transform-origin:top center;
+
+    transition:1s cubic-bezier(.2,.8,.2,1);
+
+    z-index:8;
+
+}
+
+.top-flap::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        rgba(255,255,255,.08),
+        transparent 60%
+    );
+
+}
+
+/* ===========================
+   LETTER
+=========================== */
+
+.letter{
+
+    position:absolute;
+
+    left:50%;
+    bottom:12%;
+
+    transform:translateX(-50%);
+
+    width:82%;
+    height:72%;
+
+    background:linear-gradient(
+        180deg,
+        #FBF8F3 0%,
+        #F5EEE6 100%
+    );
+
+    border-radius:8px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.18),
+        inset 0 0 0 1px rgba(0,0,0,.05);
+
+    z-index:1;
+
+    transition:1s cubic-bezier(.22,.8,.25,1);
+
+}
+
+.letter h2{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(24px,3vw,36px);
+
+    font-weight:600;
+
+    color:#542231;
+
+    letter-spacing:1px;
+
+    margin-bottom:10px;
+
+}
+
+.letter p{
+
+    font-family:"Montserrat",sans-serif;
+
+    color:#7B4C59;
+
+    letter-spacing:2px;
+
+    font-size:14px;
+
+    text-transform:uppercase;
+
+}
+
+/* ===========================
+   WAX SEAL
+=========================== */
+
+#seal{
+
+    position:absolute;
+
+    left:50%;
+    top:52%;
+
+    transform:translate(-50%,-50%);
+
+    width:84px;
+    height:84px;
+
+    border:none;
+    border-radius:50%;
+
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        radial-gradient(circle at 35% 30%,
+        #FFFDF8 0%,
+        #F5EEE6 55%,
+        #E8DDD0 100%);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.30),
+        inset -3px -3px 8px rgba(0,0,0,.08),
+        inset 3px 3px 6px rgba(255,255,255,.8);
+
+    transition:.35s;
+
+    z-index:20;
+
+}
+
+#seal:hover{
+
+    transform:translate(-50%,-50%) scale(1.06);
+
+}
+
+#seal:active{
+
+    transform:translate(-50%,-50%) scale(.95);
+
+}
+
+#seal span{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:#612739;
+
+    letter-spacing:4px;
+
+    text-shadow:0 1px rgba(255,255,255,.6);
+
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+#website{
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:1s ease;
+
+    min-height:100vh;
+
+    background:
+    radial-gradient(circle at top,
+    rgba(255,255,255,.04),
+    transparent 45%),
+
+    linear-gradient(
+        180deg,
+        #240B14 0%,
+        #34131E 45%,
+        #240B14 100%
+    );
+
+}
+
+#website.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+.hero{
+
+    min-height:100vh;
 
     display:flex;
 
@@ -137,6 +454,178 @@ body{
 
     justify-content:center;
 
-    transition:.7s;
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.hero-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(circle at center,
+    rgba(255,255,255,.03),
+    transparent 55%);
+
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+    padding:30px;
+
+}
+
+.hero-content h1{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:clamp(64px,12vw,130px);
+
+    font-weight:600;
+
+    color:#F7F2EC;
+
+    letter-spacing:10px;
+
+    margin-bottom:18px;
+
+}
+
+.hero-content p{
+
+    font-size:14px;
+
+    letter-spacing:6px;
+
+    text-transform:uppercase;
+
+    color:rgba(247,242,236,.75);
+
+}
+
+/* ===========================
+   PLACEHOLDER
+=========================== */
+
+.placeholder{
+
+    height:100vh;
+
+}
+
+/* ===========================
+   OPEN ANIMATIONS
+=========================== */
+
+/* Печатка зникає */
+
+.envelope.open #seal{
+
+    opacity:0;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.7)
+        rotate(-25deg);
+
+    pointer-events:none;
+
+}
+
+/* Верхній клапан відкривається */
+
+.envelope.open .top-flap{
+
+    transform:rotateX(180deg);
+
+    z-index:0;
+
+}
+
+/* Лист виїжджає */
+
+.envelope.open .letter{
+
+    transform:
+        translateX(-50%)
+        translateY(-180px);
+
+}
+
+/* Конверт поступово зникає */
+
+.envelope.hide{
+
+    opacity:0;
+
+    transform:scale(.9);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width:768px){
+
+    .envelope{
+
+        width:90vw;
+
+    }
+
+    #seal{
+
+        width:72px;
+        height:72px;
+
+    }
+
+    #seal span{
+
+        font-size:28px;
+
+    }
+
+    .letter h2{
+
+        font-size:28px;
+
+    }
+
+}
+
+@media (max-width:430px){
+
+    .hero-content h1{
+
+        font-size:70px;
+
+        letter-spacing:6px;
+
+    }
+
+    .hero-content p{
+
+        font-size:12px;
+
+        letter-spacing:4px;
+
+    }
 
 }
