@@ -1,20 +1,40 @@
-const envelope = document.getElementById("envelope");
-const flap = document.querySelector(".flap");
-const letter = document.querySelector(".letter");
+// ===========================
+// ELEMENTS
+// ===========================
 
-let opened = false;
+const envelope = document.querySelector(".envelope");
+const seal = document.getElementById("seal");
+const intro = document.getElementById("intro");
+const website = document.getElementById("website");
 
-envelope.addEventListener("click", () => {
+// ===========================
+// OPEN ENVELOPE
+// ===========================
 
-    if (opened) return;
+seal.addEventListener("click", () => {
 
-    opened = true;
+    // щоб не можна було натиснути двічі
+    seal.disabled = true;
 
-    flap.style.transform = "rotateX(180deg)";
-    flap.style.zIndex = "0";
+    // відкриваємо конверт
+    envelope.classList.add("open");
 
+    // через 2 секунди ховаємо конверт
     setTimeout(() => {
-        letter.style.transform = "translate(-50%, -45%)";
-    }, 500);
+
+        envelope.classList.add("hide");
+
+    }, 2000);
+
+    // показуємо сайт
+    setTimeout(() => {
+
+        intro.style.display = "none";
+
+        website.classList.add("show");
+
+        document.body.style.overflowY = "auto";
+
+    }, 2800);
 
 });
