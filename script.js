@@ -6,6 +6,7 @@ const envelope = document.querySelector(".envelope");
 const seal = document.getElementById("seal");
 const intro = document.getElementById("intro");
 const website = document.getElementById("website");
+const music = document.getElementById("bgMusic");
 
 // ===========================
 // OPEN ENVELOPE
