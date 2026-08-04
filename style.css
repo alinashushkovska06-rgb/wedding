@@ -39,7 +39,8 @@ body{
     font-family:"Montserrat",sans-serif;
 
     overflow-x:hidden;
-
+    overflow-y:hidden;
+   
     background:linear-gradient(
         135deg,
         var(--bg1),
