@@ -1,444 +1,312 @@
-/* ===========================
-   RESET
-=========================== */
+/* =========================================
+   WEDDING INVITATION 3.0
+   by ChatGPT
+========================================= */
 
-*,
-*::before,
-*::after{
+*{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
-:root{
-
-    --bg1:#240B14;
-    --bg2:#3A1622;
-    --bg3:#562637;
-
-    --envelope-dark:#4A1D2A;
-    --envelope:#612739;
-    --envelope-light:#733247;
-
-    --paper:#F8F2EB;
-
-    --seal:#F5EEE6;
-
-    --gold:#C6A061;
-
-    --text:#F7F3EE;
-
+html,
+body{
+    width:100%;
+    height:100%;
 }
 
 body{
 
+    overflow:hidden;
+
     font-family:"Montserrat",sans-serif;
 
-    overflow-x:hidden;
-    overflow-y:hidden;
-   
-    background:linear-gradient(
-        135deg,
-        var(--bg1),
-        var(--bg2),
-        var(--bg3)
-    );
-
-    color:var(--text);
-
-    min-height:100vh;
+    background:#2A1018;
 
 }
 
-/* ===========================
-   INTRO
-=========================== */
+/* ============================= */
+
+:root{
+
+    --bg1:#2A1018;
+    --bg2:#4A1D2C;
+    --bg3:#6A3447;
+
+    --paper:#F8F3EC;
+
+    --envDark:#49202E;
+    --env:#612739;
+    --envLight:#764055;
+
+    --seal:#F3ECE4;
+
+}
+
+/* ============================= */
 
 #intro{
 
     position:fixed;
-    inset:0;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    inset:0;
 
     overflow:hidden;
 
-    background:
-        radial-gradient(circle at top,
-        #5D2236 0%,
-        #421625 55%,
-        #2D0E18 100%);
+    display:flex;
 
-}
+    justify-content:center;
 
-.intro-bg{
-
-    position:absolute;
-
-    inset:0;
+    align-items:center;
 
     background:
 
     radial-gradient(circle at top,
-    rgba(255,255,255,.08),
-    transparent 45%),
-
-    radial-gradient(circle at bottom,
-    rgba(0,0,0,.35),
-    transparent 60%),
-
-    linear-gradient(
-    135deg,
-    var(--bg1),
-    var(--bg2),
-    var(--bg3)
-    );
+    #6A3247 0%,
+    #47202F 45%,
+    #2A1018 100%);
 
 }
 
-/* Grain */
+/* фон */
 
-.intro-bg::after{
-
-    content:"";
+.background{
 
     position:absolute;
 
     inset:0;
 
-    opacity:.035;
+    background:
 
-    background-image:
+    radial-gradient(circle,
+    rgba(255,255,255,.05),
+    transparent 60%),
 
-    radial-gradient(#ffffff 1px, transparent 1px);
-
-    background-size:18px 18px;
+    linear-gradient(
+    rgba(255,255,255,.03),
+    rgba(0,0,0,.20));
 
 }
 
-/* ===========================
-   ENVELOPE 2.0
-=========================== */
+/* ============================= */
 
 .envelope{
 
     position:relative;
 
-    width:min(92vw,820px);
-    height:min(72vh,560px);
+    width:100vw;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    height:100vh;
+
+    overflow:hidden;
 
 }
 
-
-/* Легка текстура паперу */
-
-/* ===========================
-   ENVELOPE 2.0
-=========================== */
+/* легка текстура */
 
 .envelope::before{
 
     content:"";
 
     position:absolute;
+
     inset:0;
 
-    background:url("assets/paper-texture.webp");
-    background-size:420px;
-    background-repeat:repeat;
+    background:
 
-    opacity:.08;
+    radial-gradient(rgba(255,255,255,.02) 1px, transparent 1px);
+
+    background-size:16px 16px;
+
+    opacity:.35;
 
     pointer-events:none;
 
-    z-index:50;
-
 }
 
-/* ===========================
-   ENVELOPE PARTS
-=========================== */
-
-.bottom-flap{
-
-    position:absolute;
-
-    bottom:0;
-    left:0;
-
-    width:100%;
-    height:72%;
-
-    background:linear-gradient(
-        180deg,
-        var(--envelope-light),
-        var(--envelope)
-    );
-
-    border-radius:0 0 14px 14px;
-
-    box-shadow:
-        0 28px 50px rgba(0,0,0,.35),
-        inset 0 1px rgba(255,255,255,.08);
-
-    z-index:2;
-
-}
-
-/* LEFT */
-
-.left-flap{
-
-    position:absolute;
-
-    bottom:0;
-    left:0;
-
-    width:50%;
-    height:72%;
-
-    background:linear-gradient(
-        135deg,
-        var(--envelope-light),
-        var(--envelope-dark)
-    );
-
-    clip-path:polygon(
-        0 100%,
-        100% 50%,
-        100% 100%
-    );
-
-    z-index:4;
-
-}
-
-/* RIGHT */
-
-.right-flap{
-
-    position:absolute;
-
-    bottom:0;
-    right:0;
-
-    width:50%;
-    height:72%;
-
-    background:linear-gradient(
-        225deg,
-        var(--envelope-light),
-        var(--envelope-dark)
-    );
-
-    clip-path:polygon(
-        0 50%,
-        100% 100%,
-        0 100%
-    );
-
-    z-index:4;
-
-}
-
-
-/* ===========================
-   TOP FLAP
-=========================== */
-
-.top-flap{
-
-    position:absolute;
-
-    top:0;
-    left:50%;
-
-    transform:translateX(-50%);
-    transform-origin:top center;
-
-    width:100%;
-    height:58%;
-
-    clip-path:polygon(0 0,100% 0,50% 100%);
-
-    background:
-        linear-gradient(
-            180deg,
-            #7A3147 0%,
-            #612437 45%,
-            #4C1B2B 100%
-        );
-
-    box-shadow:
-        inset 0 -10px 18px rgba(0,0,0,.18);
-
-    z-index:8;
-
-    transition:1s cubic-bezier(.2,.8,.2,1);
-
-}
-
-/* ===========================
-   BOTTOM FLAP
-=========================== */
-
-.bottom-flap{
-
-    position:absolute;
-
-    bottom:0;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:100%;
-    height:58%;
-
-    clip-path:polygon(50% 0,100% 100%,0 100%);
-
-    background:
-        linear-gradient(
-            180deg,
-            #5B2133 0%,
-            #471726 100%
-        );
-
-    box-shadow:
-        0 -8px 20px rgba(0,0,0,.18);
-
-    z-index:2;
-
-}
-
-/* ===========================
-   LEFT
-=========================== */
-
-.left-flap{
-
-    position:absolute;
-
-    left:0;
-    top:0;
-
-    width:50%;
-    height:100%;
-
-    clip-path:polygon(0 0,100% 50%,0 100%);
-
-    background:
-        linear-gradient(
-            135deg,
-            #6D2A3F,
-            #4C1B2B
-        );
-
-    z-index:5;
-
-}
-
-/* ===========================
-   RIGHT
-=========================== */
-
-.right-flap{
-
-    position:absolute;
-
-    right:0;
-    top:0;
-
-    width:50%;
-    height:100%;
-
-    clip-path:polygon(100% 0,100% 100%,0 50%);
-
-    background:
-        linear-gradient(
-            225deg,
-            #6D2A3F,
-            #4C1B2B
-        );
-
-    z-index:5;
-
-}
-
-/* ===========================
+/* =========================================
    LETTER
-=========================== */
+========================================= */
 
 .letter{
 
     position:absolute;
 
     left:50%;
-    top:52%;
+    top:100%;
 
-    transform:translateX(-50%);
+    transform:translate(-50%,-100%);
 
-    width:82%;
-    height:86%;
+    width:min(88vw,900px);
+    height:88vh;
 
-    background:#F8F3EC;
+    background:
+        linear-gradient(
+            180deg,
+            #FCFAF7 0%,
+            #F6F1EA 100%
+        );
 
-    border-radius:10px;
+    border-radius:18px 18px 0 0;
 
     box-shadow:
-        0 8px 24px rgba(0,0,0,.12);
+        0 15px 40px rgba(0,0,0,.18);
 
     overflow:hidden;
 
-    z-index:1;
+    z-index:2;
 
-    transition:1s cubic-bezier(.2,.8,.2,1);
-
-}
-
-
-.letter h2{
-
-    margin-top:65px;
-
-    font-family:"Cormorant Garamond", serif;
-
-    font-size:42px;
-
-    font-weight:500;
-
-    color:#5B2133;
-
-    text-align:center;
+    transition:1.1s cubic-bezier(.22,.8,.22,1);
 
 }
 
-.letter p{
+/* текстура паперу */
 
-    margin-top:18px;
+.letter::before{
 
-    text-align:center;
+    content:"";
 
-    font-size:15px;
+    position:absolute;
+    inset:0;
 
-    color:#9b8c82;
+    opacity:.06;
 
-    letter-spacing:2px;
+    background:
+    radial-gradient(circle at 20% 30%, #000 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, #000 1px, transparent 1px);
+
+    background-size:26px 26px;
 
 }
 
-/* ===========================
+/* =========================================
+   TOP FLAP
+========================================= */
+
+.top-flap{
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:52vh;
+
+    background:linear-gradient(
+        180deg,
+        #7A4358 0%,
+        #653447 55%,
+        #512434 100%
+    );
+
+    clip-path:polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    transform-origin:top center;
+
+    transition:1s;
+
+    z-index:12;
+
+}
+
+/* =========================================
+   LEFT
+========================================= */
+
+.left-flap{
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:50%;
+    height:100%;
+
+    background:linear-gradient(
+        135deg,
+        #784257,
+        #4A2131
+    );
+
+    clip-path:polygon(
+        0 0,
+        100% 50%,
+        0 100%
+    );
+
+    z-index:8;
+
+}
+
+/* =========================================
+   RIGHT
+========================================= */
+
+.right-flap{
+
+    position:absolute;
+
+    right:0;
+    top:0;
+
+    width:50%;
+    height:100%;
+
+    background:linear-gradient(
+        225deg,
+        #784257,
+        #4A2131
+    );
+
+    clip-path:polygon(
+        100% 0,
+        100% 100%,
+        0 50%
+    );
+
+    z-index:8;
+
+}
+
+/* =========================================
+   BOTTOM
+========================================= */
+
+.bottom-flap{
+
+    position:absolute;
+
+    bottom:0;
+    left:0;
+
+    width:100%;
+    height:52vh;
+
+    background:linear-gradient(
+        180deg,
+        #603042,
+        #441A28
+    );
+
+    clip-path:polygon(
+        50% 0,
+        100% 100%,
+        0 100%
+    );
+
+    z-index:5;
+
+}
+
+/* =========================================
    WAX SEAL
-=========================== */
+========================================= */
 
 #seal{
 
@@ -449,202 +317,89 @@ body{
 
     transform:translate(-50%,-50%);
 
-    width:110px;
+    width:118px;
     height:92px;
 
     border:none;
+    outline:none;
+
     cursor:pointer;
 
-    border-radius:48% 52% 47% 53% / 52% 45% 55% 48%;
+    border-radius:50% / 42%;
 
     background:
-        radial-gradient(circle at 35% 30%,
-        #f6efe7 0%,
-        #ece2d8 45%,
-        #dccfc2 100%);
+        radial-gradient(circle at 35% 28%,
+            #ffffff 0%,
+            #f6efe8 30%,
+            #e9ddd0 70%,
+            #d8c8b9 100%);
 
     box-shadow:
-        0 12px 30px rgba(0,0,0,.28),
-        inset 0 4px 6px rgba(255,255,255,.55),
-        inset 0 -8px 12px rgba(0,0,0,.08);
+        0 18px 40px rgba(0,0,0,.28),
+        inset 0 3px 6px rgba(255,255,255,.9),
+        inset 0 -8px 14px rgba(0,0,0,.08);
 
-    z-index:30;
+    transition:
+        transform .35s ease,
+        opacity .4s ease;
 
-    transition:.35s;
+    z-index:50;
 
 }
 
 #seal:hover{
 
-    transform:translate(-50%,-50%) scale(1.05);
+    transform:translate(-50%,-50%) scale(1.06);
 
 }
 
 #seal span{
 
-    font-family:"Cormorant Garamond", serif;
-
-    font-size:38px;
-
-    letter-spacing:3px;
-
-    color:#5c2033;
-
-    text-shadow:0 1px 1px rgba(255,255,255,.35);
-
-}
-
-
-/* ===========================
-   HERO
-=========================== */
-
-#website{
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transition:1s ease;
-
-    min-height:100vh;
-
-    background:
-    radial-gradient(circle at top,
-    rgba(255,255,255,.04),
-    transparent 45%),
-
-    linear-gradient(
-        180deg,
-        #240B14 0%,
-        #34131E 45%,
-        #240B14 100%
-    );
-
-}
-
-#website.show{
-
-    opacity:1;
-
-    visibility:visible;
-
-}
-
-.hero{
-
-    min-height:100vh;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-.hero-overlay{
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-
-    radial-gradient(circle at center,
-    rgba(255,255,255,.03),
-    transparent 55%);
-
-}
-
-.hero-content{
-
-    position:relative;
-
-    z-index:2;
-
-    text-align:center;
-
-    padding:30px;
-
-}
-
-.hero-content h1{
-
     font-family:"Cormorant Garamond",serif;
 
-    font-size:clamp(64px,12vw,130px);
+    font-size:42px;
 
     font-weight:600;
 
-    color:#F7F2EC;
+    letter-spacing:5px;
 
-    letter-spacing:10px;
-
-    margin-bottom:18px;
+    color:#5D2236;
 
 }
 
-.hero-content p{
-
-    font-size:14px;
-
-    letter-spacing:6px;
-
-    text-transform:uppercase;
-
-    color:rgba(247,242,236,.75);
-
-}
-
-/* ===========================
-   PLACEHOLDER
-=========================== */
-
-.placeholder{
-
-    height:100vh;
-
-}
-
-/* ===========================
+/* =========================================
    TAP TEXT
-=========================== */
+========================================= */
 
 .tap-text{
 
     position:absolute;
 
     left:50%;
-    top:calc(50% + 78px);
+
+    top:calc(50% + 84px);
 
     transform:translateX(-50%);
 
-    font-family:"Cormorant Garamond", serif;
+    font-family:"Cormorant Garamond",serif;
 
-    font-size:14px;
+    font-size:13px;
 
-    letter-spacing:2px;
+    letter-spacing:3px;
 
     text-transform:uppercase;
 
-    color:rgba(255,255,255,.35);
-
-    user-select:none;
+    color:rgba(255,255,255,.42);
 
     pointer-events:none;
 
-    animation:tapGlow 3.5s ease-in-out infinite;
+    animation:inviteGlow 3s ease-in-out infinite;
 
-    z-index:40;
+    z-index:60;
 
 }
 
-@keyframes tapGlow{
+@keyframes inviteGlow{
 
     0%,100%{
 
@@ -654,113 +409,134 @@ body{
 
     50%{
 
-        opacity:.7;
+        opacity:.75;
 
     }
 
 }
 
-/* ===========================
-   OPEN ANIMATIONS
-=========================== */
+/* =========================================
+   SITE
+========================================= */
 
-/* Печатка зникає */
+#site{
 
-.envelope.open #seal{
+    position:fixed;
+
+    inset:0;
+
+    background:
+        radial-gradient(circle at top,
+            #552435,
+            #391621,
+            #250E16);
 
     opacity:0;
 
-    transform:
-        translate(-50%,-50%)
-        scale(.7)
-        rotate(-25deg);
+    visibility:hidden;
 
-    pointer-events:none;
+    transition:opacity .8s ease;
+
+    z-index:1;
 
 }
 
-/* Верхній клапан відкривається */
+#site.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/* =========================================
+   OPEN ANIMATION
+========================================= */
 
 .envelope.open .top-flap{
 
     transform:rotateX(180deg);
 
-    z-index:0;
-
 }
-
-/* Лист виїжджає */
 
 .envelope.open .letter{
 
-    transform:
-        translateX(-50%)
-        translateY(-180px);
+    top:50%;
+
+    transform:translate(-50%,-70%);
 
 }
 
-/* Конверт поступово зникає */
-
-.envelope.hide{
+.envelope.open #seal{
 
     opacity:0;
 
-    transform:scale(.9);
+    pointer-events:none;
 
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
+    transform:translate(-50%,-50%) scale(.8);
 
 }
 
-/* ===========================
-   MOBILE
-=========================== */
+.envelope.open .tap-text{
 
-@media (max-width:768px){
+    opacity:0;
 
-    .envelope{
+}
 
-        width:90vw;
+/* =========================================
+   TRANSITIONS
+========================================= */
 
-    }
+.top-flap,
+.letter,
+#seal,
+.tap-text{
+
+    transition:all .9s cubic-bezier(.22,.8,.22,1);
+
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width:900px){
 
     #seal{
 
-        width:72px;
-        height:72px;
+        width:100px;
+        height:78px;
 
     }
 
     #seal span{
 
-        font-size:28px;
+        font-size:34px;
 
     }
 
-    .letter h2{
+    .tap-text{
 
-        font-size:28px;
+        font-size:11px;
+        letter-spacing:2px;
 
     }
 
 }
 
-@media (max-width:430px){
+@media (max-width:600px){
 
-    .hero-content h1{
+    .letter{
 
-        font-size:70px;
-
-        letter-spacing:6px;
+        width:94vw;
+        height:84vh;
 
     }
 
-    .hero-content p{
+    .top-flap,
+    .bottom-flap{
 
-        font-size:12px;
-
-        letter-spacing:4px;
+        height:50vh;
 
     }
 
