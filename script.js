@@ -1,44 +1,46 @@
-// ===========================
-// ELEMENTS
-// ===========================
+// ==========================
+// WEDDING INVITATION 3.0
+// ==========================
 
 const envelope = document.querySelector(".envelope");
 const seal = document.getElementById("seal");
+const music = document.getElementById("music");
 const intro = document.getElementById("intro");
-const website = document.getElementById("website");
-const music = document.getElementById("bgMusic");
+const site = document.getElementById("site");
 
-// ===========================
-// OPEN ENVELOPE
-// ===========================
+let opened = false;
 
 seal.addEventListener("click", () => {
-    music.play().catch(error => {
-    console.log("Музика не запустилась:", error);
-});
 
-    // щоб не можна було натиснути двічі
-    seal.disabled = true;
+    if(opened) return;
+
+    opened = true;
+
+    // запускаємо музику
+    music.volume = 1;
+
+    music.play().catch(() => {});
 
     // відкриваємо конверт
     envelope.classList.add("open");
 
-    // через 2 секунди ховаємо конверт
-    setTimeout(() => {
-
-        envelope.classList.add("hide");
-
-    }, 2000);
-
     // показуємо сайт
     setTimeout(() => {
 
-        intro.style.display = "none";
+        site.classList.add("show");
 
-        website.classList.add("show");
+    },1200);
 
-        document.body.style.overflowY = "auto";
+    // прибираємо заставку
 
-    }, 2800);
+    setTimeout(() => {
+
+        intro.style.pointerEvents="none";
+
+        intro.style.opacity="0";
+
+        intro.style.transition="opacity 1s ease";
+
+    },1700);
 
 });
