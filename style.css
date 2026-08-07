@@ -41,9 +41,8 @@ body{
 
     font-family:"Montserrat",sans-serif;
 
-    background:#4F2427;
+    background:#5A1F22;
 
-    color:#F7F3EE;
 
 }
 
@@ -131,6 +130,7 @@ body{
 #site{
 
     position:fixed;
+
     inset:0;
 
     opacity:0;
@@ -139,19 +139,12 @@ body{
     transition:opacity .9s ease;
 
     background:
-        radial-gradient(
-            circle at top,
-            rgba(255,255,255,.03),
-            transparent 45%
-        ),
-
-        radial-gradient(
-            circle at bottom,
-            rgba(0,0,0,.15),
-            transparent 70%
-        ),
-
-        #4F2427;
+        linear-gradient(
+            180deg,
+            #63282C 0%,
+            #5A1F22 45%,
+            #4C1A1D 100%
+        );
 
 }
 
@@ -160,11 +153,12 @@ body{
     content:"";
 
     position:absolute;
+
     inset:0;
 
     background-image:
         radial-gradient(
-            rgba(255,255,255,.025) 1px,
+            rgba(255,255,255,.02) 1px,
             transparent 1px
         );
 
