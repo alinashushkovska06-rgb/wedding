@@ -2,92 +2,51 @@
 <html lang="uk">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Олексій & Наталія</title>
+    <title>Wedding Invitation</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-<!-- ===========================
-INTRO
-=========================== -->
+    <!-- INTRO -->
 
-<section id="intro">
+    <div id="intro">
 
-    <div class="background"></div>
+        <img
+            src="envelope.png"
+            alt="Wedding envelope"
+            id="envelope">
 
-    <div class="envelope">
+        <!-- Клік тільки по печатці -->
 
-        <!-- Лист -->
-
-        <div class="letter">
-
-            <div class="letter-inner">
-
-            </div>
-
-        </div>
-
-        <!-- Верхній клапан -->
-
-        <div class="top-flap"></div>
-
-        <!-- Лівий -->
-
-        <div class="left-flap"></div>
-
-        <!-- Правий -->
-
-        <div class="right-flap"></div>
-
-        <!-- Нижній -->
-
-        <div class="bottom-flap"></div>
-
-        <!-- Печатка -->
-
-        <button id="seal">
-
-            <span>ON</span>
-
-        </button>
-
-        <div class="tap-text">
-
-            відкрити запрошення
-
-        </div>
+        <button id="sealButton" aria-label="Відкрити запрошення"></button>
 
     </div>
 
-</section>
+    <!-- MUSIC -->
 
-<!-- ===========================
-MAIN WEBSITE
-=========================== -->
+    <audio id="music">
 
-<main id="site">
+        <source src="music.mp3" type="audio/mpeg">
 
-</main>
+    </audio>
 
-<audio id="music" preload="auto">
+    <!-- MAIN SITE -->
 
-    <source src="music.mp3" type="audio/mpeg">
+    <main id="site">
 
-</audio>
+    </main>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
