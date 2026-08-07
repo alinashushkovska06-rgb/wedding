@@ -37,14 +37,16 @@ body{
 body{
 
     margin:0;
-
     overflow:hidden;
-
-    background:#5A2735;
 
     font-family:"Montserrat",sans-serif;
 
+    background:#4F2427;
+
+    color:#F7F3EE;
+
 }
+
 
 
 /* ==========================
@@ -129,18 +131,51 @@ body{
 #site{
 
     position:fixed;
-
     inset:0;
 
-    background:#5A2735;
-
     opacity:0;
-
     visibility:hidden;
 
     transition:opacity .9s ease;
 
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(255,255,255,.03),
+            transparent 45%
+        ),
+
+        radial-gradient(
+            circle at bottom,
+            rgba(0,0,0,.15),
+            transparent 70%
+        ),
+
+        #4F2427;
+
 }
+
+#site::before{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background-image:
+        radial-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:18px 18px;
+
+    opacity:.35;
+
+    pointer-events:none;
+
+}
+
 
 /* ==========================
    SHOW SITE
