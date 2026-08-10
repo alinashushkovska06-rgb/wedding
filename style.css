@@ -821,6 +821,234 @@ body{
     }
 }
 
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline-section {
+    position: relative;
+    padding: 100px 20px 120px;
+    overflow: hidden;
+}
+
+.timeline-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.timeline-eyebrow {
+    margin: 0 0 10px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #F8F2EB;
+    opacity: 0.7;
+}
+
+.timeline-header h2 {
+    margin: 0;
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(42px, 8vw, 64px);
+    font-weight: 400;
+    color: #F8F2EB;
+}
+
+/* сама область таймінгу */
+
+.timeline {
+    position: relative;
+    width: min(100%, 850px);
+    min-height: 1100px;
+    margin: 0 auto;
+}
+
+/* хвиляста лінія */
+
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    transform: translateX(-50%);
+    overflow: visible;
+    pointer-events: none;
+}
+
+.timeline-line path {
+    fill: none;
+    stroke: rgba(248, 242, 235, 0.45);
+    stroke-width: 1.2;
+    vector-effect: non-scaling-stroke;
+    stroke-linecap: round;
+}
+
+/* сердечко */
+
+.timeline-heart {
+    position: absolute;
+    left: 50%;
+    top: 0;
+
+    width: 28px;
+    height: 28px;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #F8F2EB;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 31px;
+    line-height: 1;
+
+    z-index: 5;
+
+    filter: drop-shadow(0 0 5px rgba(248, 242, 235, 0.25));
+
+    transition: left 0.12s linear, top 0.12s linear;
+}
+
+/* події */
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    min-height: 190px;
+
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.timeline-item.left {
+    padding-right: 75px;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.timeline-item.right {
+    margin-left: 50%;
+    padding-left: 75px;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.timeline-content {
+    max-width: 300px;
+}
+
+.timeline-time {
+    display: block;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(34px, 5vw, 48px);
+    line-height: 1;
+    font-weight: 400;
+
+    color: #F8F2EB;
+    margin-bottom: 9px;
+}
+
+.timeline-content h3 {
+    margin: 0 0 8px;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(25px, 4vw, 34px);
+    line-height: 1.05;
+    font-weight: 500;
+
+    color: #F8F2EB;
+}
+
+.timeline-content p {
+    margin: 0;
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 12px;
+    line-height: 1.7;
+    font-weight: 300;
+
+    color: rgba(248, 242, 235, 0.72);
+}
+
+
+/* плавна поява */
+
+.timeline-item.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s ease;
+}
+
+.timeline-item.left.reveal {
+    transform: translateX(-35px);
+}
+
+.timeline-item.right.reveal {
+    transform: translateX(35px);
+}
+
+.timeline-item.reveal.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+/* телефон */
+
+@media (max-width: 600px) {
+
+    .timeline-section {
+        padding: 75px 14px 90px;
+    }
+
+    .timeline-header {
+        margin-bottom: 55px;
+    }
+
+    .timeline {
+        min-height: 950px;
+    }
+
+    .timeline-item {
+        min-height: 180px;
+    }
+
+    .timeline-item.left {
+        padding-right: 38px;
+    }
+
+    .timeline-item.right {
+        padding-left: 38px;
+    }
+
+    .timeline-content {
+        max-width: 155px;
+    }
+
+    .timeline-time {
+        font-size: 32px;
+    }
+
+    .timeline-content h3 {
+        font-size: 23px;
+    }
+
+    .timeline-content p {
+        font-size: 10px;
+        line-height: 1.55;
+    }
+
+    .timeline-heart {
+        font-size: 28px;
+    }
+}
 
 
 
