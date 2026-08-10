@@ -101,27 +101,24 @@ body{
    CLICK AREA
 ========================== */
 
-#sealButton{
+#sealButton {
+    position: absolute;
+    left: 50%;
+    top: 59%;
+    transform: translate(-50%, -50%);
 
-    position:absolute;
+    width: 180px;
+    height: 180px;
 
-    left:50%;
-    top:59%;
+    border: 3px solid red;
+    background: rgba(255, 0, 0, 0.15);
 
-    transform:translate(-50%,-50%);
+    cursor: pointer;
+    border-radius: 50%;
 
-    width:140px;
-    height:140px;
-
-    border:none;
-
-    background:transparent;
-
-    cursor:pointer;
-
-    border-radius:50%;
-
+    z-index: 1000;
 }
+
 
 /* ==========================
    MAIN SITE
