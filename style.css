@@ -693,6 +693,130 @@ body{
 
 }
 
+/* =========================
+   МЕРЕЖИВНА ХУСТИНКА
+========================= */
+
+.invitation {
+    width: 100%;
+    min-height: auto;
+    padding: 70px 20px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.handkerchief {
+    position: relative;
+    width: min(88vw, 560px);
+    margin: 0 auto;
+}
+
+.handkerchief-image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.handkerchief-text {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    color: #4A1D2A;
+    padding: 20% 18%;
+    box-sizing: border-box;
+}
+
+.invitation-title {
+    margin: 0 0 18px;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(25px, 5vw, 36px);
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+.invitation-main {
+    margin: 0;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(21px, 4vw, 30px);
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+.invitation-end {
+    margin: 22px 0 0;
+
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(22px, 4.2vw, 31px);
+    font-weight: 500;
+    line-height: 1.15;
+}
+
+
+/* ПЛАВНА ПОЯВА */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ТЕЛЕФОН */
+
+@media (max-width: 600px) {
+
+    .invitation {
+        padding: 45px 14px 25px;
+    }
+
+    .handkerchief {
+        width: min(94vw, 500px);
+    }
+
+    .handkerchief-text {
+        padding: 20% 17%;
+    }
+
+    .invitation-title {
+        margin-bottom: 12px;
+    }
+
+    .invitation-end {
+        margin-top: 15px;
+    }
+}
+
+
+/* НОУТБУК */
+
+@media (min-width: 900px) {
+
+    .invitation {
+        padding: 90px 20px 45px;
+    }
+
+    .handkerchief {
+        width: min(62vw, 620px);
+    }
+}
 
 
 
