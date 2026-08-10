@@ -25,3 +25,30 @@ seal.addEventListener("click", () => {
     }, 900);
 
 });
+
+/* ===========================
+   ПЛАВНА АНІМАЦІЯ ПРИ СКРОЛІ
+=========================== */
+
+const animatedSections = document.querySelectorAll(
+    '.invitation, .calendar-section'
+);
+
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+
+        });
+    },
+    {
+        threshold: 0.15
+    }
+);
+
+animatedSections.forEach((section) => {
+    observer.observe(section);
+});
