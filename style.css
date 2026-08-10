@@ -2,119 +2,92 @@
    RESET
 ========================== */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html,
-body{
-
-    width:100%;
-    height:100%;
-
-    overflow:hidden;
-
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
-/* ==========================
-   COLORS
-========================== */
-
-:root{
-
-    --bg1:#240B14;
-    --bg2:#3A1622;
-    --bg3:#562637;
-
-}
 
 /* ==========================
    BODY
 ========================== */
 
-body{
-
-    margin:0;
-    overflow:hidden;
-
-    font-family:"Montserrat",sans-serif;
-
-    background:#5A1F22;
-
-
+body {
+    font-family: "Montserrat", sans-serif;
+    background: #240B14;
 }
 
 
-
 /* ==========================
-   INTRO
+   INTRO / ENVELOPE
 ========================== */
 
-#intro{
+#intro {
+    position: fixed;
+    inset: 0;
 
-    position:fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    inset:0;
+    background: #240B14;
 
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    background:#240B14;
-
-    z-index:999;
+    z-index: 999;
 
     transition:
-        opacity .9s ease,
-        transform .9s ease;
-
+        opacity 0.9s ease,
+        transform 0.9s ease;
 }
 
+
 /* ==========================
-   ENVELOPE
+   ENVELOPE IMAGE
 ========================== */
 
-#envelope{
+#envelope {
+    position: absolute;
+    inset: 0;
 
-    position:absolute;
+    width: 100%;
+    height: 100%;
 
-    inset:0;
+    object-fit: cover;
+    object-position: center;
 
-    width:100%;
-    height:100%;
-
-    object-fit:cover;
-
-    object-position:center;
-
-    user-select:none;
-
-    pointer-events:none;
-
+    user-select: none;
+    pointer-events: none;
 }
 
+
 /* ==========================
-   CLICK AREA
+   SEAL / CLICK
 ========================== */
 
 #sealButton {
     position: absolute;
+
     left: 50%;
     top: 59%;
+
     transform: translate(-50%, -50%);
 
-    width: 180px;
-    height: 180px;
+    width: 140px;
+    height: 140px;
 
-    border: 3px solid red;
-    background: rgba(255, 0, 0, 0.15);
+    border: none;
+    border-radius: 50%;
+
+    background: transparent;
 
     cursor: pointer;
-    border-radius: 50%;
 
     z-index: 1000;
 }
@@ -124,16 +97,21 @@ body{
    MAIN SITE
 ========================== */
 
-#site{
+#site {
+    position: fixed;
+    inset: 0;
 
-    position:fixed;
+    height: 100vh;
 
-    inset:0;
+    opacity: 0;
+    visibility: hidden;
 
-    opacity:0;
-    visibility:hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
 
-    transition:opacity .9s ease;
+    scroll-behavior: smooth;
+
+    color: #F8F2EB;
 
     background:
         linear-gradient(
@@ -143,28 +121,31 @@ body{
             #4C1A1D 100%
         );
 
+    transition: opacity 0.9s ease;
 }
 
-#site::before{
 
-    content:"";
+/* ==========================
+   SUBTLE BACKGROUND TEXTURE
+========================== */
 
-    position:absolute;
+#site::before {
+    content: "";
 
-    inset:0;
+    position: absolute;
+    inset: 0;
 
     background-image:
         radial-gradient(
-            rgba(255,255,255,.02) 1px,
+            rgba(255, 255, 255, 0.02) 1px,
             transparent 1px
         );
 
-    background-size:18px 18px;
+    background-size: 18px 18px;
 
-    opacity:.35;
+    opacity: 0.35;
 
-    pointer-events:none;
-
+    pointer-events: none;
 }
 
 
@@ -172,640 +153,516 @@ body{
    SHOW SITE
 ========================== */
 
-#site.show{
-
-    opacity:1;
-
-    visibility:visible;
-
-}
-
-/* ===========================
-   WEDDING SITE
-=========================== */
-
-#site{
-    height:100vh;
-    overflow-y:auto;
-    overflow-x:hidden;
-
-    scroll-behavior:smooth;
-
-    color:#F8F2EB;
+#site.show {
+    opacity: 1;
+    visibility: visible;
 }
 
 
-/* ===========================
+/* ==========================
    HERO
-=========================== */
+========================== */
 
-.hero{
+.hero {
+    min-height: 100vh;
 
-    min-height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    text-align: center;
 
-    text-align:center;
-
-    padding:40px 24px;
-
-    box-sizing:border-box;
-
+    padding: 40px 24px;
 }
 
 
-.hero-content{
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-
-    color:#F8F2EB;
-
+    color: #F8F2EB;
 }
 
 
-.names{
+/* ==========================
+   NAMES
+========================== */
 
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+.names {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    margin:0;
+    margin: 0;
 
-    color:#F8F2EB;
+    color: #F8F2EB;
 
-    font-family:"Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", serif;
 
-    font-size:clamp(82px, 14vw, 170px);
+    font-size: clamp(82px, 14vw, 170px);
 
-    font-weight:400;
+    font-weight: 400;
 
-    line-height:.82;
+    line-height: 0.82;
 
-    letter-spacing:-3px;
+    letter-spacing: -3px;
 
-    animation:heroNames 1.6s ease both;
-
+    animation: heroNames 1.6s ease both;
 }
 
 
-.ampersand{
+.ampersand {
+    color: #F8F2EB;
 
-    color:#F8F2EB;
+    font-family: "Cormorant Garamond", serif;
 
-    font-family:"Cormorant Garamond", serif;
+    font-size: 0.45em;
 
-    font-size:.45em;
+    font-style: italic;
 
-    font-style:italic;
-
-    line-height:1.5;
-
+    line-height: 1.5;
 }
 
 
-.wedding-date{
+/* ==========================
+   DATE
+========================== */
 
-    margin:55px 0 0;
+.wedding-date {
+    margin: 55px 0 0;
 
-    color:#F8F2EB;
+    color: #F8F2EB;
 
-    font-family:"Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif;
 
-    font-size:clamp(17px, 2.8vw, 25px);
+    font-size: clamp(17px, 2.8vw, 25px);
 
-    font-weight:300;
+    font-weight: 300;
 
-    letter-spacing:7px;
+    letter-spacing: 7px;
 
-    animation:heroDate 1.8s ease .25s both;
-
+    animation: heroDate 1.8s ease 0.25s both;
 }
 
 
-@keyframes heroNames{
+/* ==========================
+   HERO ANIMATIONS
+========================== */
 
-    from{
-        opacity:0;
-        transform:translateY(25px);
+@keyframes heroNames {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
     }
 
-    to{
-        opacity:1;
-        transform:translateY(0);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-
 }
 
 
-@keyframes heroDate{
+@keyframes heroDate {
 
-    from{
-        opacity:0;
-        transform:translateY(18px);
+    from {
+        opacity: 0;
+        transform: translateY(18px);
     }
 
-    to{
-        opacity:1;
-        transform:translateY(0);
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-
 }
 
 
-/* ===========================
+/* ==========================
    SCROLL ARROW
-=========================== */
+========================== */
 
-.scroll-down{
+.scroll-down {
+    margin-top: 80px;
 
-    margin-top:80px;
+    color: #F8F2EB;
 
-    color:#F8F2EB;
+    font-size: 34px;
 
-    font-size:34px;
-
-    opacity:.7;
+    opacity: 0.7;
 
     animation:
         scrollArrow 2s ease-in-out infinite,
-        fadeIn 2s ease .8s both;
-
+        fadeIn 2s ease 0.8s both;
 }
 
 
-@keyframes scrollArrow{
+@keyframes scrollArrow {
 
-    0%,100%{
-        transform:translateY(0);
+    0%,
+    100% {
+        transform: translateY(0);
     }
 
-    50%{
-        transform:translateY(9px);
+    50% {
+        transform: translateY(9px);
     }
-
 }
 
 
-@keyframes fadeIn{
+@keyframes fadeIn {
 
-    from{
-        opacity:0;
+    from {
+        opacity: 0;
     }
 
-    to{
-        opacity:.7;
+    to {
+        opacity: 0.7;
     }
-
 }
 
 
-/* ===========================
+/* ==========================
    INVITATION
-=========================== */
-
-.invitation,
-.calendar-section{
-
-    min-height:100vh;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    box-sizing:border-box;
-
-    padding:100px 24px;
-
-    color:#F8F2EB;
-
-}
-
-
-.section-inner{
-
-    width:min(680px, 100%);
-
-    text-align:center;
-
-}
-
-
-.eyebrow{
-
-    margin:0 0 28px;
-
-    color:#F8F2EB;
-
-    font-family:"Montserrat", sans-serif;
-
-    font-size:12px;
-
-    letter-spacing:4px;
-
-    text-transform:uppercase;
-
-}
-
-
-.invitation h2,
-.calendar-section h2{
-
-    margin:0 auto 32px;
-
-    color:#F8F2EB;
-
-    font-family:"Cormorant Garamond", serif;
-
-    font-size:clamp(46px, 7vw, 76px);
-
-    font-weight:400;
-
-    line-height:1.05;
-
-}
-
-
-.invitation-text{
-
-    max-width:570px;
-
-    margin:0 auto;
-
-    color:#F8F2EB;
-
-    font-family:"Montserrat", sans-serif;
-
-    font-size:16px;
-
-    font-weight:300;
-
-    line-height:2;
-
-}
-
-
-/* ===========================
-   CALENDAR
-=========================== */
-
-.calendar{
-
-    width:min(520px, 100%);
-
-    margin:55px auto 0;
-
-}
-
-
-.weekdays,
-.days{
-
-    display:grid;
-
-    grid-template-columns:repeat(7, 1fr);
-
-    gap:12px;
-
-}
-
-
-.weekdays{
-
-    margin-bottom:18px;
-
-    color:#F8F2EB;
-
-    font-family:"Montserrat", sans-serif;
-
-    font-size:10px;
-
-    letter-spacing:2px;
-
-    opacity:.65;
-
-}
-
-
-.days{
-
-    color:#F8F2EB;
-
-    font-family:"Montserrat", sans-serif;
-
-    font-size:14px;
-
-}
-
-
-.days span{
-
-    position:relative;
-
-    width:40px;
-    height:40px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    margin:auto;
-
-}
-
-
-/* ===========================
-   HEART AROUND 9
-=========================== */
-
-.days .selected{
-
-    color:#F8F2EB;
-
-    z-index:1;
-
-}
-
-
-/* біле сердечко навколо 9 */
-
-.days .selected::before{
-
-    content:"♡";
-
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    transform:translate(-50%, -51%);
-
-    color:#F8F2EB;
-
-    font-family:Arial, sans-serif;
-
-    font-size:58px;
-   line-height:1;
-
-    z-index:-1;
-
-}
-
-
-/* ===========================
-   MOBILE
-=========================== */
-
-@media (max-width:600px){
-
-    .names{
-
-        font-size:clamp(70px, 20vw, 105px);
-
-        letter-spacing:-2px;
-
-    }
-
-
-    .wedding-date{
-
-        margin-top:42px;
-
-        font-size:15px;
-
-        letter-spacing:5px;
-
-    }
-
-
-    .scroll-down{
-
-        margin-top:65px;
-
-    }
-
-
-    .invitation,
-    .calendar-section{
-
-        padding:80px 22px;
-
-    }
-
-
-    .invitation h2,
-    .calendar-section h2{
-
-        font-size:48px;
-
-    }
-
-
-    .invitation-text{
-
-        font-size:14px;
-
-        line-height:1.9;
-
-    }
-
-}
-
-/* ===========================
-   ПЛАВНА ПОЯВА ПРИ СКРОЛІ
-=========================== */
-
-.invitation,
-.calendar-section {
-    opacity: 0;
-    transform: translateY(35px);
-    transition:
-        opacity 1s ease,
-        transform 1s ease;
-}
-
-.invitation.show,
-.calendar-section.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Компактна секція запрошення */
-
-.invitation {
-    min-height: auto;
-    padding: 110px 24px 60px;
-}
-
-.invitation .section-inner {
-    max-width: 650px;
-}
-
-.invitation h2 {
-    font-size: clamp(42px, 7vw, 68px);
-    line-height: 1.08;
-    margin-bottom: 35px;
-}
-
-.invitation-text {
-    max-width: 500px;
-    margin: 0 auto;
-    font-size: 16px;
-    line-height: 1.8;
-}
-
-
-/* Менший відступ до календаря */
-
-.calendar-section {
-    min-height: 100vh;
-    padding-top: 40px;
-}
-
-
-@media (max-width: 600px) {
-
-    .invitation {
-        padding: 90px 22px 35px;
-    }
-
-    .invitation h2 {
-        font-size: 43px;
-        line-height: 1.08;
-        margin-bottom: 28px;
-    }
-
-    .invitation-text {
-        font-size: 15px;
-        line-height: 1.7;
-    }
-
-    .calendar-section {
-        padding-top: 30px;
-    }
-
-}
-
-/* =========================
-   МЕРЕЖИВНА ХУСТИНКА
-========================= */
+========================== */
 
 .invitation {
     width: 100%;
+
     min-height: auto;
-    padding: 70px 20px 40px;
+
     display: flex;
-    justify-content: center;
     align-items: center;
-    box-sizing: border-box;
+    justify-content: center;
+
+    padding: 70px 20px 40px;
+
+    color: #F8F2EB;
 }
+
+
+/* ==========================
+   LACE HANDKERCHIEF
+========================== */
 
 .handkerchief {
     position: relative;
+
     width: min(88vw, 560px);
+
     margin: 0 auto;
 }
 
+
 .handkerchief-image {
     display: block;
+
     width: 135%;
     max-width: none;
+
     height: auto;
-   margin-left: -12.5%;
+
+    margin-left: -12.5%;
 }
+
 
 .handkerchief-text {
     position: absolute;
+
     inset: 0;
 
     display: flex;
     flex-direction: column;
+
     justify-content: center;
     align-items: center;
 
     text-align: center;
 
     color: #4A1D2A;
+
     padding: 20% 18%;
+
     box-sizing: border-box;
 }
+
 
 .invitation-title {
     margin: 0 0 18px;
 
     font-family: "Cormorant Garamond", serif;
+
     font-size: clamp(25px, 5vw, 36px);
+
     font-weight: 500;
+
     line-height: 1.1;
 }
+
 
 .invitation-main {
     margin: 0;
 
     font-family: "Cormorant Garamond", serif;
+
     font-size: clamp(21px, 4vw, 30px);
+
     font-weight: 400;
+
     line-height: 1.25;
 }
+
 
 .invitation-end {
     margin: 22px 0 0;
 
     font-family: "Cormorant Garamond", serif;
+
     font-size: clamp(22px, 4.2vw, 31px);
+
     font-weight: 500;
+
     line-height: 1.15;
 }
 
 
-/* ПЛАВНА ПОЯВА */
+/* ==========================
+   INVITATION REVEAL
+========================== */
 
 .reveal {
     opacity: 0;
+
     transform: translateY(35px);
+
     transition:
         opacity 1s ease,
         transform 1s ease;
 }
 
+
 .reveal.visible {
     opacity: 1;
+
     transform: translateY(0);
 }
 
 
-/* ТЕЛЕФОН */
+/* ==========================
+   CALENDAR
+========================== */
+
+.calendar-section {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 24px 100px;
+
+    color: #F8F2EB;
+}
+
+
+.section-inner {
+    width: min(680px, 100%);
+
+    text-align: center;
+}
+
+
+.eyebrow {
+    margin: 0 0 28px;
+
+    color: #F8F2EB;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+}
+
+
+.calendar-section h2 {
+    margin: 0 auto 32px;
+
+    color: #F8F2EB;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: clamp(46px, 7vw, 76px);
+
+    font-weight: 400;
+
+    line-height: 1.05;
+}
+
+
+/* ==========================
+   CALENDAR GRID
+========================== */
+
+.calendar {
+    width: min(520px, 100%);
+
+    margin: 55px auto 0;
+}
+
+
+.weekdays,
+.days {
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+
+    gap: 12px;
+}
+
+
+.weekdays {
+    margin-bottom: 18px;
+
+    color: #F8F2EB;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.65;
+}
+
+
+.days {
+    color: #F8F2EB;
+
+    font-family: "Montserrat", sans-serif;
+
+    font-size: 14px;
+}
+
+
+.days span {
+    position: relative;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: auto;
+}
+
+
+/* ==========================
+   SELECTED DATE
+========================== */
+
+.days .selected {
+    color: #F8F2EB;
+
+    z-index: 1;
+}
+
+
+.days .selected::before {
+    content: "♡";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -51%);
+
+    color: #F8F2EB;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 58px;
+
+    line-height: 1;
+
+    z-index: -1;
+}
+
+
+/* ==========================
+   MOBILE
+========================== */
 
 @media (max-width: 600px) {
+
+    .names {
+        font-size: clamp(70px, 20vw, 105px);
+
+        letter-spacing: -2px;
+    }
+
+
+    .wedding-date {
+        margin-top: 42px;
+
+        font-size: 15px;
+
+        letter-spacing: 5px;
+    }
+
+
+    .scroll-down {
+        margin-top: 65px;
+    }
+
 
     .invitation {
         padding: 45px 14px 25px;
     }
 
+
     .handkerchief {
-    width: 98vw;
-    max-width: 700px;
-}
-   
+        width: 98vw;
+
+        max-width: 700px;
+    }
+
+
     .handkerchief-text {
         padding: 20% 17%;
     }
+
 
     .invitation-title {
         margin-bottom: 12px;
     }
 
+
     .invitation-end {
         margin-top: 15px;
+    }
+
+
+    .calendar-section {
+        padding: 30px 22px 80px;
+    }
+
+
+    .calendar-section h2 {
+        font-size: 48px;
     }
 }
 
 
-/* НОУТБУК */
+/* ==========================
+   LAPTOP
+========================== */
 
 @media (min-width: 900px) {
 
@@ -813,243 +670,8 @@ body{
         padding: 90px 20px 45px;
     }
 
+
     .handkerchief {
         width: min(82vw, 800px);
     }
 }
-
-/* =========================
-   TIMELINE
-========================= */
-
-.timeline-section {
-    position: relative;
-    padding: 100px 20px 120px;
-    overflow: hidden;
-}
-
-.timeline-header {
-    text-align: center;
-    margin-bottom: 80px;
-}
-
-.timeline-eyebrow {
-    margin: 0 0 10px;
-    font-family: "Montserrat", sans-serif;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #F8F2EB;
-    opacity: 0.7;
-}
-
-.timeline-header h2 {
-    margin: 0;
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(42px, 8vw, 64px);
-    font-weight: 400;
-    color: #F8F2EB;
-}
-
-/* сама область таймінгу */
-
-.timeline {
-    position: relative;
-    width: min(100%, 850px);
-    min-height: 1100px;
-    margin: 0 auto;
-}
-
-/* хвиляста лінія */
-
-.timeline-line {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    width: 5px;
-    height: 100%;
-    transform: translateX(-50%);
-    overflow: visible;
-    pointer-events: none;
-}
-
-.timeline-line path {
-    fill: none;
-    stroke: rgba(248, 242, 235, 0.45);
-    stroke-width: 1.2;
-    vector-effect: non-scaling-stroke;
-    stroke-linecap: round;
-}
-
-/* сердечко */
-
-.timeline-heart {
-    position: absolute;
-    left: 50%;
-    top: 0;
-
-    width: 28px;
-    height: 28px;
-
-    transform: translate(-50%, -50%);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #F8F2EB;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 31px;
-    line-height: 1;
-
-    z-index: 5;
-
-    filter: drop-shadow(0 0 5px rgba(248, 242, 235, 0.25));
-
-    transition: left 0.12s linear, top 0.12s linear;
-}
-
-/* події */
-
-.timeline-item {
-    position: relative;
-    width: 50%;
-    min-height: 190px;
-
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-}
-
-.timeline-item.left {
-    padding-right: 75px;
-    justify-content: flex-end;
-    text-align: right;
-}
-
-.timeline-item.right {
-    margin-left: 50%;
-    padding-left: 75px;
-    justify-content: flex-start;
-    text-align: left;
-}
-
-.timeline-content {
-    max-width: 300px;
-}
-
-.timeline-time {
-    display: block;
-
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(34px, 5vw, 48px);
-    line-height: 1;
-    font-weight: 400;
-
-    color: #F8F2EB;
-    margin-bottom: 9px;
-}
-
-.timeline-content h3 {
-    margin: 0 0 8px;
-
-    font-family: "Cormorant Garamond", serif;
-    font-size: clamp(25px, 4vw, 34px);
-    line-height: 1.05;
-    font-weight: 500;
-
-    color: #F8F2EB;
-}
-
-.timeline-content p {
-    margin: 0;
-
-    font-family: "Montserrat", sans-serif;
-    font-size: 12px;
-    line-height: 1.7;
-    font-weight: 300;
-
-    color: rgba(248, 242, 235, 0.72);
-}
-
-
-/* плавна поява */
-
-.timeline-item.reveal {
-    opacity: 0;
-    transform: translateY(35px);
-    transition:
-        opacity 0.9s ease,
-        transform 0.9s ease;
-}
-
-.timeline-item.left.reveal {
-    transform: translateX(-35px);
-}
-
-.timeline-item.right.reveal {
-    transform: translateX(35px);
-}
-
-.timeline-item.reveal.visible {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-
-/* телефон */
-
-@media (max-width: 600px) {
-
-    .timeline-section {
-        padding: 75px 14px 90px;
-    }
-
-    .timeline-header {
-        margin-bottom: 55px;
-    }
-
-    .timeline {
-        min-height: 950px;
-    }
-
-    .timeline-item {
-        min-height: 180px;
-    }
-
-    .timeline-item.left {
-        padding-right: 38px;
-    }
-
-    .timeline-item.right {
-        padding-left: 38px;
-    }
-
-    .timeline-content {
-        max-width: 155px;
-    }
-
-    .timeline-time {
-        font-size: 32px;
-    }
-
-    .timeline-content h3 {
-        font-size: 23px;
-    }
-
-    .timeline-content p {
-        font-size: 10px;
-        line-height: 1.55;
-    }
-
-    .timeline-heart {
-        font-size: 28px;
-    }
-}
-
-
-
-    
-
-
-
