@@ -11,7 +11,7 @@ seal.addEventListener("click", () => {
 
     opened = true;
 
-    music.play();
+    music.play().catch(() => {});
 
     intro.style.transform = "scale(1.03)";
     intro.style.opacity = "0";
@@ -26,23 +26,26 @@ seal.addEventListener("click", () => {
 
 });
 
+
 /* ===========================
    ПЛАВНА АНІМАЦІЯ ПРИ СКРОЛІ
 =========================== */
 
 const animatedSections = document.querySelectorAll(
-    '.invitation, .calendar-section'
+    ".invitation, .calendar-section"
 );
 
 const observer = new IntersectionObserver(
     (entries) => {
+
         entries.forEach((entry) => {
 
             if (entry.isIntersecting) {
-                entry.target.classList.add('show');
+                entry.target.classList.add("show");
             }
 
         });
+
     },
     {
         threshold: 0.15
@@ -53,15 +56,24 @@ animatedSections.forEach((section) => {
     observer.observe(section);
 });
 
+
+/* ===========================
+   REVEAL АНІМАЦІЯ
+=========================== */
+
 const revealElements = document.querySelectorAll(".reveal");
 
 const revealObserver = new IntersectionObserver(
     (entries) => {
+
         entries.forEach((entry) => {
+
             if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
             }
+
         });
+
     },
     {
         threshold: 0.15
@@ -71,6 +83,7 @@ const revealObserver = new IntersectionObserver(
 revealElements.forEach((element) => {
     revealObserver.observe(element);
 });
+
 
 /* =========================
    TIMELINE HEART SCROLL
@@ -82,7 +95,12 @@ const timelinePath = document.querySelector("#timelinePath");
 
 function moveTimelineHeart() {
 
-    if (!timeline  !timelineHeart  !timelinePath) return;
+    /* Якщо таймінгу ще немає на сторінці —
+       просто нічого не робимо */
+
+    if (!timeline  !timelineHeart  !timelinePath) {
+        return;
+    }
 
     const timelineRect = timeline.getBoundingClientRect();
 
@@ -96,21 +114,33 @@ function moveTimelineHeart() {
     progress = Math.max(0, Math.min(1, progress));
 
     const pathLength = timelinePath.getTotalLength();
+
     const point = timelinePath.getPointAtLength(
         pathLength * progress
     );
 
-    const x = (point.x / 100) * timeline.clientWidth;
-    const y = (point.y / 1000) * timeline.clientHeight;
+    const x =
+        (point.x / 100) *
+        timeline.clientWidth;
+
+    const y =
+        (point.y / 1000) *
+        timeline.clientHeight;
 
     timelineHeart.style.left = ${x}px;
     timelineHeart.style.top = ${y}px;
 }
 
-window.addEventListener("scroll", moveTimelineHeart, {
-    passive: true
-});
 
-window.addEventListener("resize", moveTimelineHeart);
+window.addEventListener(
+    "scroll",
+    moveTimelineHeart,
+    { passive: true }
+);
+
+window.addEventListener(
+    "resize",
+    moveTimelineHeart
+);
 
 moveTimelineHeart();
