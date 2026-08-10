@@ -788,7 +788,7 @@ body{
     }
 
     .handkerchief {
-        width: min(94vw, 500px);
+        width: min(100vw, 650px);
     }
 
     .handkerchief-text {
@@ -814,7 +814,7 @@ body{
     }
 
     .handkerchief {
-        width: min(62vw, 620px);
+        width: min(75vw, 750px);
     }
 }
 
