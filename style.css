@@ -788,9 +788,10 @@ body{
     }
 
     .handkerchief {
-        width: min(100vw, 650px);
-    }
-
+    width: 92vw;
+    max-width: 680px;
+}
+   
     .handkerchief-text {
         padding: 20% 17%;
     }
