@@ -5,84 +5,91 @@ const seal = document.getElementById("sealButton");
 
 let opened = false;
 
-seal.addEventListener("click", () => {
+if (seal) {
+    seal.addEventListener("click", () => {
 
-    if (opened) return;
+        if (opened) return;
 
-    opened = true;
+        opened = true;
 
-    music.play().catch(() => {});
+        if (music) {
+            music.play().catch(() => {});
+        }
 
-    intro.style.transform = "scale(1.03)";
-    intro.style.opacity = "0";
+        intro.style.transform = "scale(1.03)";
+        intro.style.opacity = "0";
 
-    setTimeout(() => {
+        setTimeout(() => {
+            intro.style.display = "none";
+            site.classList.add("show");
+        }, 900);
 
-        intro.style.display = "none";
-
-        site.classList.add("show");
-
-    }, 900);
-
-});
+    });
+}
 
 
 /* ===========================
-   ПЛАВНА АНІМАЦІЯ ПРИ СКРОЛІ
+   ПЛАВНА АНІМАЦІЯ
 =========================== */
 
 const animatedSections = document.querySelectorAll(
     ".invitation, .calendar-section"
 );
 
-const observer = new IntersectionObserver(
-    (entries) => {
+if (animatedSections.length) {
 
-        entries.forEach((entry) => {
+    const observer = new IntersectionObserver(
+        (entries) => {
 
-            if (entry.isIntersecting) {
-                entry.target.classList.add("show");
-            }
+            entries.forEach((entry) => {
 
-        });
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                }
 
-    },
-    {
-        threshold: 0.15
-    }
-);
+            });
 
-animatedSections.forEach((section) => {
-    observer.observe(section);
-});
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+    animatedSections.forEach((section) => {
+        observer.observe(section);
+    });
+}
 
 
 /* ===========================
-   REVEAL АНІМАЦІЯ
+   REVEAL
 =========================== */
 
 const revealElements = document.querySelectorAll(".reveal");
 
-const revealObserver = new IntersectionObserver(
-    (entries) => {
+if (revealElements.length) {
 
-        entries.forEach((entry) => {
+    const revealObserver = new IntersectionObserver(
+        (entries) => {
 
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-            }
+            entries.forEach((entry) => {
 
-        });
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
 
-    },
-    {
-        threshold: 0.15
-    }
-);
+            });
 
-revealElements.forEach((element) => {
-    revealObserver.observe(element);
-});
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+    revealElements.forEach((element) => {
+        revealObserver.observe(element);
+    });
+}
 
 
 /* =========================
@@ -94,9 +101,6 @@ const timelineHeart = document.querySelector("#timelineHeart");
 const timelinePath = document.querySelector("#timelinePath");
 
 function moveTimelineHeart() {
-
-    /* Якщо таймінгу ще немає на сторінці —
-       просто нічого не робимо */
 
     if (!timeline  !timelineHeart  !timelinePath) {
         return;
@@ -130,7 +134,6 @@ function moveTimelineHeart() {
     timelineHeart.style.left = ${x}px;
     timelineHeart.style.top = ${y}px;
 }
-
 
 window.addEventListener(
     "scroll",
